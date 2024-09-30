@@ -7,6 +7,7 @@
     use App\Repositories\AddresseRepository;
     use App\Repositories\CustomerStateCitiesRepository;
     use App\Repositories\RepresentativeRepository;
+    use DateTime;
 
     class CustomerService implements CustomerContract
     {
@@ -28,19 +29,20 @@
 
         public function register($customer)
         {
-            // precisa fazer as validações dos dados
             try {
+
+                $dateOfBirth = new DateTime($customer->dateOfBirth);
 
                 $id_customer = $this->customer->registerCustomer([
                     'name'            => $customer->name, 
-                    'cpf'             => $customer->cpf, 
-                    'dateOfBirth'     => $customer->dateOfBirth, 
+                    'cpf'             => str_replace(['.', '-'], '', $customer->cpf), 
+                    'dateOfBirth'     => $dateOfBirth->format('Y-m-d'), 
                     'sex'             => $customer->sex
                 ]);
     
                 $this->addresse->registerAddresse([
                     'customer_id'     => $id_customer, 
-                    'cep'             => $customer->cep, 
+                    'cep'             => str_replace(['-'], '', $customer->cep), 
                     'address'         => $customer->address, 
                     'number'          => $customer->number
                 ]);
@@ -102,5 +104,12 @@
             }   
             
             return response()->json(['message' => $representativeCustomer])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+        }
+
+        public function filterCustomer($customer)
+        {
+            foreach ($customer->query() as $key => $queryParams) {
+                $customers = $this->customer->filterCustomers($key, $queryParams); 
+            }
         }
     }

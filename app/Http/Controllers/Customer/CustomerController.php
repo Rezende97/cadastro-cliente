@@ -35,4 +35,9 @@
         {
             return $this->customer->representativeCity($id_city);
         }
+
+        public function filterCustomers(Request $request)
+        {
+            return $this->customer->filterCustomer($request);
+        }
     }

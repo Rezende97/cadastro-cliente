@@ -34,4 +34,6 @@ Route::group(['prefix' => 'customer'], function () {
 
     Route::get('/representativeCity/{id}', [CustomerController::class, 'showRepresentativeCity']);
 
+    Route::get('/filterCustomers', [CustomerController::class, 'filterCustomers']);
+
 });

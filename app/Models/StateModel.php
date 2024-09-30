@@ -11,4 +11,9 @@ class StateModel extends Model
 
     protected $table = 'states';
     protected $fillable = ['state_id', 'state', 'acronym'];
+
+    public function customer()
+    {
+        return $this->hasMany(CustomerModel::class);
+    }
 }

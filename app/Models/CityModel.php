@@ -18,4 +18,8 @@ class CityModel extends Model
         return $this->hasMany(representativeModel::class, 'city_id', 'id');
     }
 
+    public function customer()
+    {
+        return $this->hasMany(CustomerModel::class);
+    }
 }

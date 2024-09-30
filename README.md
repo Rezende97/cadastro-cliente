@@ -6,12 +6,12 @@
     - Instalar composer
     - Instalar Mysql 
 
-    * Recomendo utilizar o XAMPP, COM O PACOTE DO MYSQL E PHP JÁ INSTALADO.
+    * Recomendo utilizar o XAMPP COM O PACOTE DO MYSQL E PHP JÁ INSTALADO.
 
 <!-- Conexão ao banco de dados -->
 2° ETAPA 
     
-    - CONFIGURAR O .ENV
+    CONFIGURAR O .ENV
 
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -22,9 +22,9 @@
 
 3º ETAPA
 
-    - RODAR AS MIGRATIONS PARA CRIAR A ESTRUTURA DA BASE DE DADOS
+    RODAR AS MIGRATIONS PARA CRIAR A ESTRUTURA DA BASE DE DADOS
 
-    COMANDO (PHP ARTISAN MIGRATE)
+    COMANDO: PHP ARTISAN MIGRATE
 
 4º ETAPA
 

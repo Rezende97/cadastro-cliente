@@ -25,4 +25,9 @@
 
             return $cityCustomer["city_id"];
         }
+
+        public function filterCustomers($key, $customer)
+        {
+            return CustomerModel::where($key, 'like', $customer)->get();
+        }
     }
